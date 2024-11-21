@@ -10,7 +10,7 @@ const addProduct = async (req: Request, res: Response) => {
     const product = await ProductService.addProductToDB(validatedData);
     res
       .status(200)
-      .json(apiResponse.success(product, 'Product added successfully'));
+      .json(apiResponse.success(product, 'Bicycle created successfully'));
   } catch (error) {
     res.status(400).json(apiResponse.error(error, 'Invalid product data'));
   }

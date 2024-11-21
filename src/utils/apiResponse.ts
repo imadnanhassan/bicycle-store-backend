@@ -1,21 +1,21 @@
 export const apiResponse = {
   success: (data: unknown, message = 'Success') => ({
-    success: true,
     message,
+    success: true,
     data,
   }),
 
   error: (error: unknown, message = 'Error occurred') => {
     if (error instanceof Error && error.name === 'ValidationError') {
       return {
-        success: false,
         message: 'Validation failed',
+        success: false,
         error: error,
       };
     }
     return {
-      success: false,
       message,
+      success: false,
       error,
     };
   },

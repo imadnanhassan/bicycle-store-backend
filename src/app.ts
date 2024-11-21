@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// application students routes
+// application products routes
 app.use('/api/v1/products', ProductRoutes);
 
 // Global Error Handler
