@@ -30,7 +30,34 @@ const getAllProducts = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+const getSingleProductById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { productId } = req.params;
+
+    const product = await ProductService.getSingleProductByIdFromDB(productId);
+
+    if (!product) {
+      res
+        .status(404)
+        .json(apiResponse.error(null, 'Bicycle not found with the given ID'));
+      return;
+    }
+
+    res
+      .status(200)
+      .json(apiResponse.success(product, 'Bicycle fetched successfully'));
+  } catch (error) {
+    res
+      .status(500)
+      .json(apiResponse.error(error, 'Error fetching bicycle by ID'));
+  }
+};
+
 export const ProductController = {
   addProduct,
   getAllProducts,
+  getSingleProductById,
 };
