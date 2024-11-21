@@ -56,8 +56,34 @@ const getSingleProductById = async (
   }
 };
 
+const updateProduct = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { productId } = req.params;
+    const updatedData = req.body;
+
+    const updatedProduct = await ProductService.updateProductInDB(
+      productId,
+      updatedData
+    );
+
+    if (!updatedProduct) {
+      res.status(404).json(apiResponse.error(null, 'Bicycle not found'));
+      return;
+    }
+
+    res
+      .status(200)
+      .json(
+        apiResponse.success(updatedProduct, 'Bicycle updated successfully')
+      );
+  } catch (error) {
+    res.status(400).json(apiResponse.error(error, 'Error updating bicycle'));
+  }
+};
+
 export const ProductController = {
   addProduct,
   getAllProducts,
   getSingleProductById,
+  updateProduct,
 };
