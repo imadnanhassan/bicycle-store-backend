@@ -16,7 +16,7 @@ export const validate =
         res.status(constants.HTTP_STATUS.BAD_REQUEST).json({
           status: 'error',
           message: constants.MESSAGES.VALIDATION_ERROR,
-          error: error.errors, // Safe to access here
+          error: error.errors, 
         });
       } else {
         // Fallback for unexpected errors
