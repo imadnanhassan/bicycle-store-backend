@@ -81,9 +81,29 @@ const updateProduct = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+const deleteProduct = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { productId } = req.params;
+
+    const deletedProduct = await ProductService.deleteProductFromDB(productId);
+
+    if (!deletedProduct) {
+      res.status(404).json(apiResponse.error(null, 'Bicycle not found'));
+      return;
+    }
+
+    res
+      .status(200)
+      .json(apiResponse.success({}, 'Bicycle deleted successfully'));
+  } catch (error) {
+    res.status(500).json(apiResponse.error(error, 'Error deleting bicycle'));
+  }
+};
+
 export const ProductController = {
   addProduct,
   getAllProducts,
   getSingleProductById,
   updateProduct,
+  deleteProduct,
 };
