@@ -2,14 +2,11 @@
 import { Product } from './product.interface';
 import { ProductModel } from './product.model';
 
-// const addProductToDB = async (product: Product) => {
-//   const result = await ProductModel.create(product);
-//   return result;
-// };
+
 
 const addProductToDB = async (product: Product) => {
   try {
-    // Create a new product document in the database
+
     const newProduct = await ProductModel.create(product);
     return newProduct;
   } catch (error) {

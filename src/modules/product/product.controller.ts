@@ -1,19 +1,18 @@
 import { Request, Response } from 'express';
 import { ProductService } from './product.service';
 import { apiResponse } from '../../utils/apiResponse';
+import { ProductSchema } from './product.validation';
 
 const addProduct = async (req: Request, res: Response) => {
   try {
-    const productData = req.body;
+    const validatedData = ProductSchema.parse(req.body);
 
-    const product = await ProductService.addProductToDB(productData);
+    const product = await ProductService.addProductToDB(validatedData);
     res
       .status(200)
       .json(apiResponse.success(product, 'Product added successfully'));
   } catch (error) {
-    res
-      .status(400)
-      .json(apiResponse.error(error, 'Error adding product to database'));
+    res.status(400).json(apiResponse.error(error, 'Invalid product data'));
   }
 };
 
