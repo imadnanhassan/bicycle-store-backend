@@ -16,6 +16,21 @@ const addProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getAllProducts = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { searchTerm } = req.query;
+    const products = await ProductService.getAllProductsToDB(
+      searchTerm as string | undefined
+    );
+    res
+      .status(200)
+      .json(apiResponse.success(products, 'Bicycles retrieved successfully'));
+  } catch (error) {
+    res.status(500).json(apiResponse.error(error, 'Failed to fetch products'));
+  }
+};
+
 export const ProductController = {
   addProduct,
+  getAllProducts,
 };
