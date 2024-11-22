@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = require("body-parser");
 const errorHandler_1 = require("./middleware/errorHandler");
 const product_route_1 = require("./modules/product/product.route");
+const order_route_1 = require("./modules/order/order.route");
 const app = (0, express_1.default)();
 // Middleware
 app.use((0, cors_1.default)());
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 });
 // application products routes
 app.use('/api/v1/products', product_route_1.ProductRoutes);
+app.use('/api/v1/orders', order_route_1.OrderRoutes);
 // Global Error Handler
 app.use(errorHandler_1.errorHandler);
 exports.default = app;
