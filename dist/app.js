@@ -12,7 +12,7 @@ const order_route_1 = require("./modules/order/order.route");
 const app = (0, express_1.default)();
 // Middleware
 app.use((0, cors_1.default)());
-app.use(express_1.default.json());
+app.use(express_1.default.json({ limit: '250mb' }));
 app.use((0, body_parser_1.urlencoded)({ extended: true }));
 // Simple route
 app.get('/', (req, res) => {
