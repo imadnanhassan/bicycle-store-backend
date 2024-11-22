@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 // application products routes
 app.use('/api/v1/products', ProductRoutes);
-app.use('/api/v1/order', OrderRoutes);
+app.use('/api/v1/orders', OrderRoutes);
 
 // Global Error Handler
 app.use(errorHandler);

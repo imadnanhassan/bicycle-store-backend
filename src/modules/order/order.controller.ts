@@ -15,6 +15,24 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+const getTotalRevenue = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const revenueData = await OrderService.calculateRevenue();
+    res
+      .status(200)
+      .json(
+        apiResponse.success(revenueData, 'Revenue calculated successfully')
+      );
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Error calculating revenue';
+    res
+      .status(500)
+      .json(apiResponse.error(errorMessage, 'Revenue calculation failed'));
+  }
+};
+
 export const OrderController = {
   createOrder,
+  getTotalRevenue,
 };
