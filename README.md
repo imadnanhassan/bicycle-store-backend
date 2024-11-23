@@ -32,8 +32,14 @@
 ## Installation
 
 ### Clone the Repository
-git clone https://github.com/your-username/bicycles-store-backend.git
-cd bicycles-store-backend
+Open Terminal
+
+```https
+  git clone https://github.com/your-username/bicycles-store-backend.git
+```
+```https
+  cd bicycles-store-backend
+```
 
 
 ### Product add
