@@ -2,23 +2,26 @@
 
 ## **Features**
 
-- **Product Management**  
+- **Product Management**
+
   - Add, update, delete, and view products.
   - Tracks inventory and availability.
 
-- **Order Management**  
+- **Order Management**
+
   - Create orders linked to specific products.
   - Automatic inventory adjustment upon order placement.
 
-- **Revenue Calculation**  
+- **Revenue Calculation**
+
   - Aggregates total revenue from all orders.
 
-- **Error Handling**  
+- **Error Handling**
+
   - Robust error handling for invalid requests or insufficient stock.
 
-- **MongoDB Integration**  
+- **MongoDB Integration**
   - Secure and scalable database integration.
-
 
 ## **Technologies Used**
 
@@ -28,92 +31,59 @@
 - **TypeScript**: Ensures type safety in the codebase.
 - **Vercel**: Deployment platforms for hosting the backend.
 
-
 ## Installation
 
 ### Clone the Repository
+
 Open Terminal
 
 ```https
   git clone https://github.com/your-username/bicycles-store-backend.git
 ```
+
 ```https
   cd bicycles-store-backend
 ```
 
-
-### Product add
-
+### Install Dependencies
 
 ```https
-  POST /api/products/
+  npm install
 ```
 
-| Parameter         | Type      |
-| :--------         | :-------  | 
-| `name`            | `string`  | 
-| `brand`           | `string`  | 
-| `price`           | `number`  | 
-| `type`            | `string`  | 
-| `description`     | `string`  | 
-| `quantity`        | `number`  | 
-| `inStock`         | `boolean` | 
-
-
-### Get All Product
+### Set Environment Variables
 
 ```https
-  GET /api/products/
+ PORT=3000
+ NODE_ENV=development
+ MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<database-name>
 ```
 
-
-### Geet Single Product
+### Run the application
 
 ```https
-  GET /api/products/productId
+ npm run dev
 ```
 
+## API Endpoints
 
-### Update PProduct
+### Product Management
 
-```https
-  PUT /api/products/productId
-```
-
-| Parameter         | Type      |
-| :--------         | :-------  | 
-| `name`            | `string`  | 
-| `brand`           | `string`  | 
-| `price`           | `number`  | 
-| `type`            | `string`  | 
-| `description`     | `string`  | 
-| `quantity`        | `number`  | 
-| `inStock`         | `boolean` | 
+| Method        | Endpoint             |  Description
+| :------------ | :------------------- |  :------------ 
+| `POST`        | `/api/products`      |  Create a new product
+| `GET`         | `/api/products`      |  Retrieve all products
+| `GET`         | `/api/products/:id`  |  Retrieve a single product
+| `PUT`         | `/api/products/:id`  |  Update an existing product
+| `DELETE`      | `/api/products/:id`  |  Delete a product
 
 
-### Delete PProduct
 
-```https
-  Delete /api/products/productId
-```
+### Orders & Revenue Management
 
----------------------------------------------------
+| Method        | Endpoint             |  Description
+| :------------ | :------------------- |  :------------ 
+| `POST`        | `/api/orders`        |  Create a new order
+| `GET`         | `/api/orders/revenue`|  Calculate total revenue
 
 
-### Order
-
-```https
-  POST /api/orders
-```
-
-| Parameter         | Type      |
-| :--------         | :-------  | 
-| `email`           | `string`  | 
-| `product`         | `string`  | 
-| `quantity`        | `number`  | 
-| `totalPrice`      | `number`  | 
-
-### Revenue from Orders
-```https
-  GET /api/orders/revenue
-```
