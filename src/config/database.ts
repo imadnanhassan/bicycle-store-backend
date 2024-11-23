@@ -1,10 +1,7 @@
 import mongoose from 'mongoose';
 
 const connectDB = async (): Promise<void> => {
-  const uri =
-    process.env.NODE_ENV === 'development'
-      ? process.env.MONGO_URI_ATLAS
-      : process.env.MONGO_URI_LOCAL;
+  const uri = process.env.MONGO_URI_ATLAS;
 
   try {
     await mongoose.connect(uri as string);

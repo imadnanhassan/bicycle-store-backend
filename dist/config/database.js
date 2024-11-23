@@ -14,9 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const uri = process.env.NODE_ENV === 'development'
-        ? process.env.MONGO_URI_ATLAS
-        : process.env.MONGO_URI_LOCAL;
+    const uri = process.env.MONGO_URI_ATLAS;
     try {
         yield mongoose_1.default.connect(uri);
         console.log('Connected to MongoDB');
