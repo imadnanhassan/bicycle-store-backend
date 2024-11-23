@@ -9,5 +9,5 @@ dotenv_1.default.config();
 // Export configuration variables
 exports.config = {
     PORT: process.env.PORT || 5000,
-    MONGO_URI: process.env.MONGO_URI || 'mongodb://localhost:27017/bicycle-store',
+    MONGO_URI: process.env.MONGO_URI_ATLAS || 'mongodb://localhost:27017/bicycle-store',
 };

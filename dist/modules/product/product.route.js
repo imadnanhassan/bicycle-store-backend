@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const product_controller_1 = require("./product.controller");
 const router = express_1.default.Router();
 router.get('/', product_controller_1.ProductController.getAllProducts);
-router.post('/product-store', product_controller_1.ProductController.addProduct);
+router.post('/', product_controller_1.ProductController.addProduct);
 router.get('/:productId', product_controller_1.ProductController.getSingleProductById);
 router.put('/:productId', product_controller_1.ProductController.updateProduct);
 router.delete('/:productId', product_controller_1.ProductController.deleteProduct);
