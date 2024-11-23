@@ -7,7 +7,6 @@ const createOrder = async (orderData: Order) => {
 
   const product = await ProductModel.findById(productId);
   if (!product) {
-   
     throw new Error('Product not found');
   }
 
@@ -25,23 +24,40 @@ const createOrder = async (orderData: Order) => {
   return order;
 };
 
+// const calculateRevenue = async () => {
+//   const revenueData = await OrderModel.aggregate([
+//     {
+//       $lookup: {
+//         from: 'products',
+//         localField: 'product',
+//         foreignField: '_id',
+//         as: 'productDetails',
+//       },
+//     },
+//     {
+//       $unwind: '$productDetails',
+//     },
+//     {
+//       $project: {
+//         totalPrice: { $multiply: ['$productDetails.price', '$quantity'] },
+//       },
+//     },
+//     {
+//       $group: {
+//         _id: null,
+//         totalRevenue: { $sum: '$totalPrice' },
+//       },
+//     },
+//   ]);
+
+//   return revenueData.length > 0 ? revenueData[0] : { totalRevenue: 0 };
+// };
 
 const calculateRevenue = async () => {
   const revenueData = await OrderModel.aggregate([
     {
-      $lookup: {
-        from: 'products',
-        localField: 'product',
-        foreignField: '_id',
-        as: 'productDetails',
-      },
-    },
-    {
-      $unwind: '$productDetails',
-    },
-    {
       $project: {
-        totalPrice: { $multiply: ['$productDetails.price', '$quantity'] },
+        totalPrice: { $multiply: ['$price', '$quantity'] },
       },
     },
     {
@@ -54,9 +70,6 @@ const calculateRevenue = async () => {
 
   return revenueData.length > 0 ? revenueData[0] : { totalRevenue: 0 };
 };
-
-
-
 
 export const OrderService = {
   createOrder,
