@@ -36,9 +36,7 @@ git clone https://github.com/your-username/bicycles-store-backend.git
 cd bicycles-store-backend
 
 
-### Category Update
-
-
+### Product add
 
 
 ```https
@@ -53,4 +51,63 @@ cd bicycles-store-backend
 | `type`            | `string`  | 
 | `description`     | `string`  | 
 | `quantity`        | `number`  | 
-| `inStock`         | `boolean`  | 
+| `inStock`         | `boolean` | 
+
+
+### Get All Product
+
+```https
+  GET /api/products/
+```
+
+
+### Geet Single Product
+
+```https
+  GET /api/products/productId
+```
+
+
+### Update PProduct
+
+```https
+  PUT /api/products/productId
+```
+
+| Parameter         | Type      |
+| :--------         | :-------  | 
+| `name`            | `string`  | 
+| `brand`           | `string`  | 
+| `price`           | `number`  | 
+| `type`            | `string`  | 
+| `description`     | `string`  | 
+| `quantity`        | `number`  | 
+| `inStock`         | `boolean` | 
+
+
+### Delete PProduct
+
+```https
+  Delete /api/products/productId
+```
+
+---------------------------------------------------
+
+
+### Order
+
+```https
+  POST /api/orders
+```
+
+| Parameter         | Type      |
+| :--------         | :-------  | 
+| `email`           | `string`  | 
+| `product`         | `string`  | 
+| `quantity`        | `number`  | 
+| `totalPrice`      | `number`  | 
+
+### Revenue from Orders
+```https
+  GET /api/orders/revenue
+```
