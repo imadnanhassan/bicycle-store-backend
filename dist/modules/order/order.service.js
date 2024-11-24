@@ -56,6 +56,22 @@ const calculateRevenue = () => __awaiter(void 0, void 0, void 0, function* () {
     ]);
     return revenueData.length > 0 ? revenueData[0] : { totalRevenue: 0 };
 });
+// const calculateRevenue = async () => {
+//   const revenueData = await OrderModel.aggregate([
+//     {
+//       $project: {
+//         totalPrice: { $multiply: ['$price', '$quantity'] },
+//       },
+//     },
+//     {
+//       $group: {
+//         _id: null,
+//         totalRevenue: { $sum: '$totalPrice' },
+//       },
+//     },
+//   ]);
+//   return revenueData.length > 0 ? revenueData[0] : { totalRevenue: 0 };
+// };
 exports.OrderService = {
     createOrder,
     calculateRevenue,
